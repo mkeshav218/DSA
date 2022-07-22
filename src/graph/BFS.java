@@ -1,5 +1,13 @@
 package graph;
-
+/***
+ * 
+ * BFS Traversal of undirected graph
+ * v :- No of Nodes
+ * e :- No of Edges
+ * Time Complexity :- O(v+e)  
+ * Space Complexity :- O(v)
+ * 
+ */
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +26,7 @@ public class BFS {
 		bfsTraversal(adjList);
 	}
 	
+	//Add new edge
 	static void addEdge(HashMap<Integer,List<Integer>> adjList,int u,int v) {
 		if(adjList.containsKey(u)) {
 			LinkedList<Integer> values = (LinkedList<Integer>) adjList.get(u);
@@ -40,6 +49,7 @@ public class BFS {
 		}
 	}
 	
+	//Print Adjacency List
 	static void printAdjList(HashMap<Integer,List<Integer>> adjList) {
 		System.out.println("****** Adjacency List ******");
 		Set<Integer> keySet = adjList.keySet();
@@ -49,6 +59,7 @@ public class BFS {
 		System.out.println("\n");
 	}
 	
+	//BFS Traversal
 	static void bfsTraversal(HashMap<Integer,List<Integer>> adjList) {
 		System.out.println("BFS traversal :- ");
 		LinkedList<Integer> q = new LinkedList<Integer>();
