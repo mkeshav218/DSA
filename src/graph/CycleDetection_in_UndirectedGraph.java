@@ -25,7 +25,10 @@ public class CycleDetection_in_UndirectedGraph {
 		addEdge(adjList, 4, 6);
 		printAdjList(adjList);
 		bfsTraversal(adjList);
-		System.out.println("Is cycle present :- "+isCyclePresent(adjList));
+		System.out.println("Is cycle present :- "+isCyclePresentIteratively(adjList));
+		HashMap<Integer,Integer> nodeToParentMap = new HashMap<>();
+		boolean[] visited = new boolean[100];
+		System.out.println("Is cycle present :- "+isCyclePresentRecursively(adjList, 1, -1, nodeToParentMap, visited));
 	}
 	
 	static void addEdge(HashMap<Integer,List<Integer>> adjList,int u,int v) {
@@ -59,7 +62,7 @@ public class CycleDetection_in_UndirectedGraph {
 		System.out.println("\n");
 	}
 	
-	static boolean isCyclePresent(HashMap<Integer,List<Integer>> adjList) {
+	static boolean isCyclePresentIteratively(HashMap<Integer,List<Integer>> adjList) {
 		HashMap<Integer,Integer> nodeToParentMap = new HashMap<Integer, Integer>();
 		LinkedList<Integer> q = new LinkedList<Integer>();
 		q.add(1);
@@ -82,6 +85,22 @@ public class CycleDetection_in_UndirectedGraph {
 				}
 			}
 
+		}
+		return false;
+	}
+	
+	static boolean isCyclePresentRecursively(HashMap<Integer,List<Integer>> adjList,int node,int parent,HashMap<Integer,Integer> nodeToParentMap,boolean[] visited) {
+		visited[node] = true;
+		nodeToParentMap.put(node, parent);
+		LinkedList<Integer> allConnectedNodes = (LinkedList<Integer>) adjList.get(node);
+		for(int n:allConnectedNodes) {
+			if(visited[n]==false) {
+				return isCyclePresentRecursively(adjList, n, node, nodeToParentMap, visited);
+			}else {
+				if(n!=parent) {
+					return true;
+				}
+			}
 		}
 		return false;
 	}
