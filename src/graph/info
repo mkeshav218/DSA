@@ -3,3 +3,5 @@ hgq^eyJED4qsbEwkeukxKfGKIIQ8quD@5u4vFxfE
 2)DFS
 3)CycleDetection_in_UndirectedGraph
 4)CycleDetection_in_DirectedGraph
+5)TopologicalSort
+6)TopologicalSort_BFS or Kahn's Algorithm
