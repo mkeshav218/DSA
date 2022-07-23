@@ -7,6 +7,11 @@ package graph;
  * Time Complexity :- O(v+e)  
  * Space Complexity :- O(v)
  * 
+ * If there exists a path from Node A to Node B and 
+ * if Node A is not the parent of Node B then 
+ * cycle exists in undirected graph.
+ * 
+ *  To check parent, a hashMap of node-to-parent mapping is maintained.
  */
 import java.util.HashMap;
 import java.util.LinkedList;
