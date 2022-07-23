@@ -1,13 +1,14 @@
 package graph;
 /***
  * 
- *Check if cycle is present in undirected graph
+ *Check if cycle is present in directed graph
  * v :- No of Nodes
  * e :- No of Edges
  * Time Complexity :- O(v+e)  
  * Space Complexity :- O(v)
  * 
  */
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,20 +20,20 @@ public class CycleDetection_in_DirectedGraph {
 		HashMap<Integer,List<Integer>> adjList = new HashMap<>();
 		addEdge(adjList, 1, 2);
 		addEdge(adjList, 2, 3);
-		addEdge(adjList, 3, 7);
-		addEdge(adjList, 3, 8);
-		addEdge(adjList, 8, 7);
-		addEdge(adjList, 2, 4);
+		addEdge(adjList, 3, 4);
+		addEdge(adjList, 3, 5);
 		addEdge(adjList, 4, 5);
-		addEdge(adjList, 5, 6);
-		addEdge(adjList, 6, 4);
+		addEdge(adjList, 2, 6);
+		addEdge(adjList, 6, 7);
+		addEdge(adjList, 7, 8);
+		addEdge(adjList, 8, 6);
 		printAdjList(adjList);
-//		bfsTraversal(adjList);
-//		System.out.println("Is cycle present :- "+isCyclePresentIteratively(adjList));
-//		HashMap<Integer,Integer> nodeToParentMap = new HashMap<>();
-		boolean[] visited = new boolean[100];
-		boolean[] currentStackCalls = new boolean[100];
-//		System.out.println("Is cycle present :- "+isCyclePresentRecursively(adjList, 1, -1, nodeToParentMap, visited));
+
+		boolean[] visited = new boolean[10];
+		boolean[] currentStackCalls = new boolean[10];
+		System.out.println("Is cycle present :- "+isCyclePresentRecursively(adjList, 1, visited, currentStackCalls));
+		System.out.println(Arrays.toString(visited));
+		System.out.println(Arrays.toString(currentStackCalls));
 	}
 	
 	static void addEdge(HashMap<Integer,List<Integer>> adjList,int u,int v) {
@@ -87,13 +88,23 @@ public class CycleDetection_in_DirectedGraph {
 		if(visited[node]==true && currentStackCalls[node]==true) {
 			return true;
 		}
+		if(visited[node]==true && currentStackCalls[node]==false) {
+			return false;
+		}
 		if(visited[node]==false) {
 			visited[node]=true;
 			currentStackCalls[node]=true;
 			LinkedList<Integer> allConnectedNodes = (LinkedList<Integer>) adjList.get(node);
-			for(int i:allConnectedNodes) {
-				
+			boolean ans = false;
+			if (allConnectedNodes!=null) {
+				for (int i : allConnectedNodes) {
+					ans = ans || isCyclePresentRecursively(adjList, i, visited, currentStackCalls);
+					if (ans)
+						return true;
+				} 
 			}
+			currentStackCalls[node] = false;
+			return ans;
 		}
 		return false;
 	}
