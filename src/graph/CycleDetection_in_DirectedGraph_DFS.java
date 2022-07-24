@@ -7,6 +7,9 @@ package graph;
  * Time Complexity :- O(v+e)  
  * Space Complexity :- O(v)
  * 
+ * Maintain the stack-Calls
+ * if stack calls repeat then cycle is present
+ * 
  */
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class CycleDetection_in_DirectedGraph {
+public class CycleDetection_in_DirectedGraph_DFS {
 
 	public static void main(String[] args) {
 		HashMap<Integer,List<Integer>> adjList = new HashMap<>();
@@ -57,33 +60,6 @@ public class CycleDetection_in_DirectedGraph {
 		System.out.println("\n");
 	}
 	
-	static boolean isCyclePresentIteratively(HashMap<Integer,List<Integer>> adjList) {
-		HashMap<Integer,Integer> nodeToParentMap = new HashMap<Integer, Integer>();
-		LinkedList<Integer> q = new LinkedList<Integer>();
-		q.add(1);
-		boolean[] visited = new boolean[7];
-		visited[1] = true;
-		nodeToParentMap.put(1,-1);
-		while(!q.isEmpty()) {
-			int node = q.removeFirst();
-			LinkedList<Integer> list = (LinkedList<Integer>) adjList.get(node);
-			for(int i:list) {
-				if(visited[i]==false) {
-					q.addLast(i);
-					visited[i]= true;
-					nodeToParentMap.put(i, node);
-				}else {
-					int parent = nodeToParentMap.get(node);
-					if(i!=parent) {
-						return true;
-					}
-				}
-			}
-
-		}
-		return false;
-	}
-	
 	static boolean isCyclePresentRecursively(HashMap<Integer,List<Integer>> adjList,int node,boolean[] visited,boolean[] currentStackCalls) {
 		if(visited[node]==true && currentStackCalls[node]==true) {
 			return true;
@@ -107,27 +83,6 @@ public class CycleDetection_in_DirectedGraph {
 			return ans;
 		}
 		return false;
-	}
-	
-	static void bfsTraversal(HashMap<Integer,List<Integer>> adjList) {
-		System.out.println("BFS traversal :- ");
-		LinkedList<Integer> q = new LinkedList<Integer>();
-		q.add(1);
-		boolean[] visited = new boolean[7];
-		System.out.print(1 +" ");
-		visited[1] = true;
-		while(!q.isEmpty()) {
-			int node = q.removeFirst();
-			LinkedList<Integer> list = (LinkedList<Integer>) adjList.get(node);
-			for(int i:list) {
-				if(visited[i]==false) {
-					System.out.print(i+" ");
-					q.addLast(i);
-					visited[i]= true;
-				}
-			}
-		}
-		System.out.println("\n");
 	}
 
 }
