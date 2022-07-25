@@ -28,9 +28,12 @@ public class ShortestPath_in_UndirectedGraph {
 		addEdge(adjList, 7, 8);
 		printAdjList(adjList);
 		boolean[] visited = new boolean[9];
-		System.out.println("Shortest path = " + findShortestPath(adjList, 1, 8, visited));
+		LinkedList<Integer> shortestPath = new LinkedList<>();
+		LinkedList<Integer> currentPath = new LinkedList<>();
+		System.out.println("Length of Shortest path = " + findShortestPath(adjList, 1, 8, visited,shortestPath,currentPath));
+		System.out.println("Shortest Path = " + shortestPath);
 	}
-	
+
 	//Add new edge
 	static void addEdge(HashMap<Integer,List<Integer>> adjList,int u,int v) {
 		if(adjList.containsKey(u)) {
@@ -42,7 +45,7 @@ public class ShortestPath_in_UndirectedGraph {
 			values.add(v);
 			adjList.put(u, values);
 		}
-		
+
 		if(adjList.containsKey(v)) {
 			LinkedList<Integer> values = (LinkedList<Integer>) adjList.get(v);
 			values.add(u);
@@ -53,7 +56,7 @@ public class ShortestPath_in_UndirectedGraph {
 			adjList.put(v, values);
 		}
 	}
-	
+
 	//Print Adjacency List
 	static void printAdjList(HashMap<Integer,List<Integer>> adjList) {
 		System.out.println("****** Adjacency List ******");
@@ -64,23 +67,35 @@ public class ShortestPath_in_UndirectedGraph {
 		System.out.println("\n");
 	}
 
-	static int findShortestPath(HashMap<Integer,List<Integer>> adjList,int src,int dest,boolean[] visited) {
+	static int findShortestPath(HashMap<Integer,List<Integer>> adjList,int src,int dest,boolean[] visited,LinkedList<Integer> shortestPath,LinkedList<Integer> currentPath) {
 		LinkedList<Integer> allNodes = (LinkedList<Integer>) adjList.get(src);
 		visited[src] = true;
-		if(allNodes!=null) {
-			if(allNodes.contains(dest)) {
-				return 1;
-			}else {
-				int min = Integer.MAX_VALUE;
-				for(int i:allNodes) {
-					if(!visited[i]) {
-						min = Math.min(min, findShortestPath(adjList, i, dest, visited));
+		currentPath.add(src);
+		if(allNodes.contains(dest)) {
+			currentPath.add(dest);
+			if(shortestPath.size()==0 || shortestPath.size()>currentPath.size()) {
+				shortestPath.clear();
+				for(int i:currentPath) {
+					shortestPath.add(i);
+				}
+				currentPath.removeLast();
+				currentPath.removeLast();
+			}
+			return 1;
+		}else {
+			int min = Integer.MAX_VALUE;
+			for(int i:allNodes) {
+				if(!visited[i]) {
+					int ans =  findShortestPath(adjList, i, dest, visited,shortestPath,currentPath);
+					if(ans<min) {
+						min = ans;
 					}
 				}
-				return min + 1;
 			}
+			currentPath.removeLast();
+			return min + 1;
 		}
-		return Integer.MAX_VALUE;
+
 	}
 
 }
