@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+*)How users from same room are sending and receiving the messages?
+Ans :- When a user click on "Start Chatting", he starts listening on the event which is 
+	roomId of that room.And when he sends any messages then message gets emitted to 
+	event which is roomId of that room.This way a user can sends & receive messages
+	inside a room.
+
+*)If a user does not join any room, will he be able to receive message?
+Ans :- No, A user can't receive any message without joining a room because without joining
+	any room, user has not started listening on any event hence user will not receive 
+	any message.
+
+*) Will a user from different room can get messages of other room?
+Ans :- No, A user from different room can't get messages from other room because the user 
+	is not listening on event of the other room.
