@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 
 public class ShortestPath_in_UndirectedGraph {
 
@@ -28,45 +29,35 @@ public class ShortestPath_in_UndirectedGraph {
 		addEdge(adjList, 6, 7);
 		addEdge(adjList, 7, 8);
 		printAdjList(adjList);
-		boolean[] visited = new boolean[9];
-		LinkedList<Integer> shortestPath = new LinkedList<>();
-		LinkedList<Integer> currentPath = new LinkedList<>();
-		System.out.println("Length of Shortest path = " + findShortestPathDFS(adjList, 2, 7, -1,visited,shortestPath,currentPath));
+
+		findShortestPathDFS(adjList, 2, 7, new Stack<Integer>());
 		System.out.println("Shortest Path using DFS = " + shortestPath);
 		
 		System.out.println("Shortest Path using BFS = " + findShortestPathBFS(adjList, 2, 7,8));
 	}
-
-	static int findShortestPathDFS(HashMap<Integer,List<Integer>> adjList,int src,int dest,int parent,boolean[] visited,LinkedList<Integer> shortestPath,LinkedList<Integer> currentPath) {
-		LinkedList<Integer> allNodes = (LinkedList<Integer>) adjList.get(src);
-		visited[src] = true;
-		currentPath.add(src);
-		if(allNodes.contains(dest)) {
-			currentPath.add(dest);
-			System.out.println(currentPath);
-			if(shortestPath.size()==0 || shortestPath.size()>currentPath.size()) {
-				shortestPath.clear();
-				for(int i:currentPath) {
-					shortestPath.add(i);
-				}
-				currentPath.removeLast();
-				currentPath.removeLast();
-			}
-			return 1;
-		}else {
-			int min = Integer.MAX_VALUE;
-			for(int i:allNodes) {
-				if(i!=parent) {
-					int ans =  findShortestPathDFS(adjList, i, dest,src, visited,shortestPath,currentPath);
-					if(ans<min) {
-						min = ans;
-					}
-				}
-			}
-			currentPath.removeLast();
-			return min + 1;
+	
+	static int min = Integer.MAX_VALUE;
+	static List<Integer> shortestPath = new LinkedList<>();
+	static void findShortestPathDFS(HashMap<Integer,List<Integer>> adjList,int src,int dest,Stack<Integer> currentStackCalls) {
+		currentStackCalls.push(src);
+		if(src==dest) {
+			min = Math.min(min, currentStackCalls.size());
+			System.out.println(currentStackCalls);
+			shortestPath.clear();
+			for(int i:currentStackCalls)
+				shortestPath.add(i);
+			currentStackCalls.pop();
+			return;
 		}
+		LinkedList<Integer> allNodes = (LinkedList<Integer>) adjList.get(src);
+		for(int i:allNodes) {
+			if(!currentStackCalls.contains(i)) {
+				findShortestPathDFS(adjList, i, dest, currentStackCalls);
+			}
+		}
+		currentStackCalls.pop();
 	}
+
 	
 	static List<Integer> findShortestPathBFS(HashMap<Integer,List<Integer>> adjList,int src,int dest,int v){
 		int[] nodeToParentMap = new int[v+1];

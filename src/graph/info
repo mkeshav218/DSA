@@ -6,4 +6,4 @@ hgq^eyJED4qsbEwkeukxKfGKIIQ8quD@5u4vFxfE
 5)TopologicalSort_DFS
 6)TopologicalSort_BFS or Kahn's Algorithm
 7)CycleDetection_in_DirectedGraph_BFS
-8)ShortestPath_in_UndirectedGraph :- Given source & destination node, find the shortest path betwen them.
+8)ShortestPath_in_UndirectedGraph :- Given source & destination node, find the shortest path between them.
