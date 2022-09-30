@@ -51,9 +51,17 @@ public class SinglyLinkedListTest {
 		list.printList();
 		System.out.println("Head :- " + list.getHead().getData() + ", Tail :- " + list.getTail().getData()+", Length :- " + list.getLength()+"\n");
 
-		list.reverse();
-		list.printList();
-		System.out.println("Head :- " + list.getHead().getData() + ", Tail :- " + list.getTail().getData()+", Length :- " + list.getLength()+"\n");
+
+		System.out.println("\nList2 details :- ");
+		ReverseSinglyLinkedList list2 = new ReverseSinglyLinkedList();
+		list2.createList(list);
+		list2.printList();
+		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
+
+		
+		list2.reverseListIteratively();
+		list2.printList();
+		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
 
 	}
 	

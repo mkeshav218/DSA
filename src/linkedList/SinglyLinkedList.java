@@ -1,5 +1,12 @@
 package linkedList;
-
+/***
+ * 
+ * @author User
+ * LinkedList :- 
+ * 			Linear Data structure
+ * 			Collection of Nodes
+ *
+ */
 public class SinglyLinkedList {
 	Node head;
 	Node tail;
@@ -23,7 +30,7 @@ public class SinglyLinkedList {
 		}
 		return temp.getData();
 	}
-	
+
 	public void insertAtBeg(int data) {
 		Node newNode = new Node(data);
 		if(this.head==null) {
@@ -34,7 +41,7 @@ public class SinglyLinkedList {
 		this.head = newNode;
 		this.length++;
 	}
-	
+
 	public void insertAtEnd(int data) {
 		Node newNode = new Node(data);
 		if(this.tail==null) {
@@ -45,7 +52,7 @@ public class SinglyLinkedList {
 		this.tail = newNode;
 		this.length++;
 	}
-	
+
 	public void insertAtIndex(int data,int index) {
 		if(index<0 || index>this.length) {
 			return;
@@ -67,7 +74,7 @@ public class SinglyLinkedList {
 			this.length++;
 		}
 	}
-	
+
 	public void deleteFromBeg() {
 		if(this.head!=null) {
 			this.head = this.head.next;
@@ -76,7 +83,7 @@ public class SinglyLinkedList {
 			this.length--;
 		}
 	}
-	
+
 	public void deleteFromEnd() {
 		if(this.tail!=null) {
 			Node temp = head;
@@ -92,7 +99,7 @@ public class SinglyLinkedList {
 			this.length--;
 		}
 	}
-	
+
 	public void deleteAtIndex(int index) {
 		if(index<0 || index>=this.length) {
 			return;
@@ -112,26 +119,7 @@ public class SinglyLinkedList {
 			this.length--;
 		}
 	}
-	
-	public void reverse() {
-		if(head==tail) {
-			return;
-		}
-		Node prev = null;
-		Node curr = head;
-		Node nextPtr = head.next;
-		while(curr!=null) {
-			curr.next = prev;
-			prev = curr;
-			curr = nextPtr;
-			if(nextPtr!=null)
-				nextPtr = nextPtr.next;
-		}
-		tail = head;
-		head = prev;
-	}
-	
-	
+
 	public Node getHead() {
 		return head;
 	}
@@ -143,7 +131,7 @@ public class SinglyLinkedList {
 	public int getLength() {
 		return length;
 	}
-	
+
 	public void printList() {
 		System.out.println("Elements of the List :- ");
 		Node temp = this.head;
@@ -153,5 +141,5 @@ public class SinglyLinkedList {
 		}
 		System.out.println();
 	}
-	
+
 }
