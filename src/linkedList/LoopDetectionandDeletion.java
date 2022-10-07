@@ -54,4 +54,53 @@ public class LoopDetectionandDeletion {
 		}
 		return false;
 	}
+	
+	/***
+	 * Method-1 :- To remove loop
+	 * Using HashSet to remove loop
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(n)
+	 * 
+	 */
+	public static void removeLoop(Node head) {
+		Node temp = head;
+        HashSet<Node> allNodes = new HashSet<>();
+        allNodes.add(temp);
+        while(temp!=null){
+            if(allNodes.add(temp.next)){
+                temp = temp.next;
+            }else{
+                temp.next = null;
+                temp = temp.next;
+            }
+        }
+	}
+	
+	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(n)
+	 * First Detect Loop using floyd-cycle-detection algorithm
+	 * Store all the nodes present in loop inside a hashSet
+	 * Start traversing from head & check whether the node is present in hashset
+	 * First node that is present will be the starting point of loop.
+	 * Set the next of its previous node to null;
+	 * 
+	 */
+	public static void removeLoop1(Node head) {
+		Node temp = head;
+        HashSet<Node> allNodes = new HashSet<>();
+        allNodes.add(temp);
+        while(temp!=null){
+            if(allNodes.add(temp.next)){
+                temp = temp.next;
+            }else{
+                temp.next = null;
+                temp = temp.next;
+            }
+        }
+	}
+	
+	
 }
