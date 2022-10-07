@@ -54,7 +54,13 @@ public class SinglyLinkedListTest {
 
 		System.out.println("\nList2 details :- ");
 		ReverseSinglyLinkedList list2 = new ReverseSinglyLinkedList();
-		list2.createList(list);
+		list2.insertAtBeg(1);
+		list2.insertAtBeg(2);
+		list2.insertAtBeg(3);
+		list2.insertAtBeg(4);
+		list2.insertAtBeg(5);
+		list2.insertAtBeg(6);
+
 		list2.printList();
 		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
 
@@ -63,6 +69,27 @@ public class SinglyLinkedListTest {
 		list2.printList();
 		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
 
+		list2.reverseRecursively();
+		list2.printList();
+		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
+
+		System.out.println("Reversing in K group Recursively :- ");
+		list2.reverseInKgroupRecursively(3);
+		list2.printList();
+		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
+
+		list2.reverseInKgroupRecursively(4);
+		list2.printList();
+		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
+		
+		System.out.println("Reversing in K group Iteratively :- ");
+		list2.reverseInKgroupIteratively(3);
+		list2.printList();
+		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
+
+		list2.reverseInKgroupIteratively(4);
+		list2.printList();
+		System.out.println("Head :- " + list2.head.getData() + ", Tail :- " + list2.tail.getData()+", Length :- " + list2.length+"\n");
 	}
 	
 
