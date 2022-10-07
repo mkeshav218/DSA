@@ -3,7 +3,7 @@ package linkedList;
 import java.util.HashSet;
 
 public class LoopDetectionandDeletion {
-	
+
 	public static void main(String[] args) {
 		SinglyLinkedList list = new SinglyLinkedList();
 		list.insertAtBeg(1);
@@ -11,7 +11,8 @@ public class LoopDetectionandDeletion {
 		Node temp = list.getTail();
 		list.insertAtEnd(4);
 		list.tail.next = temp;
-		removeLoop2(list.getHead());
+		System.out.println("Start Node = " + getStartNodeOfLoop(list.getHead()).getData());
+		removeLoop3(list.getHead());
 		list.printList();
 	}
 
@@ -27,22 +28,22 @@ public class LoopDetectionandDeletion {
 	 *  
 	 */
 	public static boolean isLoopPresent(Node head) {
-        if(head==null || head.next==null) {
+		if(head==null || head.next==null) {
 			return false;
 		}
 		Node slowPtr = head;
-		Node fastPtr = head.next;
-		while(fastPtr!=null && slowPtr!=fastPtr) {
-			fastPtr = fastPtr.next;
-			if(fastPtr!=null)
-				fastPtr = fastPtr.next;
-            slowPtr = slowPtr.next;
+		Node fastPtr = head;
+		while(fastPtr!=null && fastPtr.next!=null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			if(slowPtr==fastPtr)
+				break;
 		}
-        if(fastPtr!=null)
-            return true;
+		if(fastPtr==slowPtr)
+			return true;
 		return false;
 	}
-	
+
 	/***
 	 * 
 	 * Using HashSet to detect loop
@@ -50,12 +51,12 @@ public class LoopDetectionandDeletion {
 	 * Space Complexity :- O(n)
 	 * 
 	 */
-	public static boolean isLoopPresenti(Node head) {
-        if(head==null || head.next==null) {
+	public static boolean isLoopPresent1(Node head) {
+		if(head==null || head.next==null) {
 			return false;
 		}
-        HashSet<Node> allNodes = new HashSet<>();
-        Node temp = head;
+		HashSet<Node> allNodes = new HashSet<>();
+		Node temp = head;
 		while(temp!=null) {
 			if(allNodes.add(temp)) {
 				temp = temp.next;
@@ -65,7 +66,7 @@ public class LoopDetectionandDeletion {
 		}
 		return false;
 	}
-	
+
 	/***
 	 * Method-1 :- To remove loop
 	 * Using HashSet to remove loop
@@ -75,19 +76,19 @@ public class LoopDetectionandDeletion {
 	 */
 	public static void removeLoop(Node head) {
 		Node temp = head;
-        HashSet<Node> allNodes = new HashSet<>();
-        allNodes.add(temp);
-        while(temp!=null){
-            if(allNodes.add(temp.next)){
-                temp = temp.next;
-            }else{
-                temp.next = null;
-                temp = temp.next;
-            }
-        }
+		HashSet<Node> allNodes = new HashSet<>();
+		allNodes.add(temp);
+		while(temp!=null){
+			if(allNodes.add(temp.next)){
+				temp = temp.next;
+			}else{
+				temp.next = null;
+				temp = temp.next;
+			}
+		}
 	}
-	
-	
+
+
 	/***
 	 * 
 	 * Time Complexity :- O(n)
@@ -100,19 +101,33 @@ public class LoopDetectionandDeletion {
 	 * 
 	 */
 	public static void removeLoop1(Node head) {
+		if(head==null || head.next == null){
+			return;
+		}
+		Node slowPtr = head;
+		Node fastPtr = head;
+		while(fastPtr!=null && fastPtr.next!=null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			if(slowPtr==fastPtr)
+				break;
+		}
+		if(fastPtr!=slowPtr)
+			return;
+		HashSet<Node> list = new HashSet<>();
+		while(list.add(slowPtr)){
+			slowPtr = slowPtr.next;
+		}
 		Node temp = head;
-        HashSet<Node> allNodes = new HashSet<>();
-        allNodes.add(temp);
-        while(temp!=null){
-            if(allNodes.add(temp.next)){
-                temp = temp.next;
-            }else{
-                temp.next = null;
-                temp = temp.next;
-            }
-        }
+		while(!list.contains(temp)){
+			temp = temp.next;
+		}
+		while(slowPtr.next != temp){
+			slowPtr = slowPtr.next;
+		}
+		slowPtr.next= null;
 	}
-	
+
 	/***
 	 * 
 	 * Time Complexity :- O(n)
@@ -126,37 +141,107 @@ public class LoopDetectionandDeletion {
 	 */
 	public static void removeLoop2(Node head) {
 		if(head==null || head.next==null)
-            return;
-        Node slowPtr = head;
-        Node fastPtr = head.next;
-        while(fastPtr!=null && slowPtr!=fastPtr){
-            fastPtr = fastPtr.next;
-            if(fastPtr!=null)
-                fastPtr = fastPtr.next;
-            slowPtr = slowPtr.next;
-        }
-        if(fastPtr==null)
-            return;
-        int count = 1;
-         Node temp = slowPtr.next;
-         while(temp!=slowPtr){
-             count++;
-             temp = temp.next;
-         }
-         Node ptr1 = head;
-         Node ptr2 = head;
-         while(count!=0){
-             ptr2 = ptr2.next;
-             count--;
-         }
-         while(ptr1!=ptr2){
-             ptr1 = ptr1.next;
-             ptr2 = ptr2.next;
-         }
-         while(ptr2.next!=ptr1){
-             ptr2 = ptr2.next;
-         }
-         ptr2.next = null;
+			return;
+		Node slowPtr = head;
+		Node fastPtr = head;
+		while(fastPtr!=null && fastPtr.next!=null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			if(slowPtr==fastPtr)
+				break;
+		}
+		if(fastPtr!=slowPtr)
+			return;
+		int count = 1;
+		Node temp = slowPtr.next;
+		while(temp!=slowPtr){
+			count++;
+			temp = temp.next;
+		}
+		Node ptr1 = head;
+		Node ptr2 = head;
+		while(count!=0){
+			ptr2 = ptr2.next;
+			count--;
+		}
+		while(ptr1!=ptr2){
+			ptr1 = ptr1.next;
+			ptr2 = ptr2.next;
+		}
+		while(ptr2.next!=ptr1){
+			ptr2 = ptr2.next;
+		}
+		ptr2.next = null;
+	}
+
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(1)
+	 * First Detect Loop using floyd-cycle-detection algorithm
+	 * Set slowPtr to the head of the list.
+	 * Start moving both pointers again at same speed,
+	 * When both pointers meet, that will be the starting point of loop.
+	 * Set the next of its previous node to null;
+	 * 
+	 */
+	public static void removeLoop3(Node head) {
+		if(head==null || head.next==null)
+			return;
+		Node slowPtr = head;
+		Node fastPtr = head;
+		while(fastPtr!=null && fastPtr.next!=null){
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			if(slowPtr==fastPtr)
+				break;
+		}
+		if(fastPtr!=slowPtr)
+			return;
+
+		slowPtr = head;
+		if(fastPtr!=head){
+			while(fastPtr.next!=slowPtr.next){
+				slowPtr=slowPtr.next;
+				fastPtr=fastPtr.next;
+			}
+		}
+		else{
+			while(fastPtr.next!=head){
+				fastPtr=fastPtr.next;
+			}
+		}
+		fastPtr.next=null;
 	}
 	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(1)
+	 * First Detect Loop using floyd-cycle-detection algorithm
+	 * Set slowPtr to the head of the list.
+	 * Start moving both pointers again at same speed,
+	 * When both pointers meet, that will be the starting point of loop.
+	 * 
+	 */
+	public static Node getStartNodeOfLoop(Node head) {
+        if(head==null || head.next==null)
+            return null;
+        Node slowPtr= head,fastPtr=head;
+        while(fastPtr!=null && fastPtr.next!=null){
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+            if(slowPtr==fastPtr)
+                break;
+        }
+        if(slowPtr!=fastPtr)
+            return null;
+        slowPtr = head;
+        while(slowPtr!=fastPtr){
+            slowPtr=slowPtr.next;
+            fastPtr=fastPtr.next;
+        }
+        return slowPtr;
+	}
+
 }
