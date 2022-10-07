@@ -3,11 +3,22 @@ package linkedList;
 import java.util.HashSet;
 
 public class LoopDetectionandDeletion {
+	
+	public static void main(String[] args) {
+		SinglyLinkedList list = new SinglyLinkedList();
+		list.insertAtBeg(1);
+		list.insertAtEnd(3);
+		Node temp = list.getTail();
+		list.insertAtEnd(4);
+		list.tail.next = temp;
+		removeLoop2(list.getHead());
+		list.printList();
+	}
 
 	/***
 	 * 
-	 * Floyd’s Cycle Detection Algorithm
-	 * This approach uses a two-pointer – a fast pointer and a slow pointer to determine if there exists a cycle in the loop.
+	 * Floydï¿½s Cycle Detection Algorithm
+	 * This approach uses a two-pointer ï¿½ a fast pointer and a slow pointer to determine if there exists a cycle in the loop.
 	 *  The slow pointer moves one node ahead at a time, while the fast pointer moves two nodes ahead at a time.
 	 *  If a loop exists in the linked list, the fast and slow pointers are bound to meet at some point.
 	 * 
@@ -102,5 +113,50 @@ public class LoopDetectionandDeletion {
         }
 	}
 	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(1)
+	 * First Detect Loop using floyd-cycle-detection algorithm
+	 * Count the number of nodes in the loop. Let the count be k.
+	 * Fix one pointer to the head and another to a kth node from the head.
+	 * Move both pointers at the same pace, they will meet at the loop starting node.
+	 * Get a pointer to the last node of the loop and make the next of it NULL.
+	 * 
+	 */
+	public static void removeLoop2(Node head) {
+		if(head==null || head.next==null)
+            return;
+        Node slowPtr = head;
+        Node fastPtr = head.next;
+        while(fastPtr!=null && slowPtr!=fastPtr){
+            fastPtr = fastPtr.next;
+            if(fastPtr!=null)
+                fastPtr = fastPtr.next;
+            slowPtr = slowPtr.next;
+        }
+        if(fastPtr==null)
+            return;
+        int count = 1;
+         Node temp = slowPtr.next;
+         while(temp!=slowPtr){
+             count++;
+             temp = temp.next;
+         }
+         Node ptr1 = head;
+         Node ptr2 = head;
+         while(count!=0){
+             ptr2 = ptr2.next;
+             count--;
+         }
+         while(ptr1!=ptr2){
+             ptr1 = ptr1.next;
+             ptr2 = ptr2.next;
+         }
+         while(ptr2.next!=ptr1){
+             ptr2 = ptr2.next;
+         }
+         ptr2.next = null;
+	}
 	
 }
