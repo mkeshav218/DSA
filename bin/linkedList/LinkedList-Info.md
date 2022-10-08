@@ -6,3 +6,4 @@
 [Add-1-to-List](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/Add1ToList.java) \
 [Add 2 LinkedList](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/Add2List.java) \
 [Intersection of 2 LinkedList](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/IntersectionOf2List.java) \
+[Palindrome](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/Palindrome.java) \
