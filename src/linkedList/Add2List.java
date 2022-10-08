@@ -1,5 +1,7 @@
 package linkedList;
 
+import java.util.Stack;
+
 public class Add2List {
 
 	public static void main(String[] args) {
@@ -19,7 +21,10 @@ public class Add2List {
 //		list1.head = addTwoLists1(list1.head, list2.head);
 //		list1.printList();
 		
-		list1.head = addTwoLists2(list1.head, list2.head);
+//		list1.head = addTwoLists2(list1.head, list2.head);
+//		list1.printList();
+		
+		list1.head = addTwoListsUsingStack(list1.head, list2.head);
 		list1.printList();
 
 	}
@@ -72,38 +77,7 @@ public class Add2List {
 	        first = reverse(first);
 			return first;
 	    }
-	    
-	public static Node addTwoLists1(Node first, Node second){
-	        Node temp1 = reverse(first);
-	        Node temp2 = reverse(second);
-	        Node head1 = temp1;
-	        Node head2 = temp2;
-	        while(temp1.next!=null && temp2.next!=null){
-	            temp1 = temp1.next;
-	            temp2 = temp2.next;
-	        }
-	        while(temp1.next!=null){
-	            temp2.next = new Node(0);
-	            temp1 = temp1.next;
-	            temp2 = temp2.next;
-	        }
-	        while(temp2.next!=null){
-	            temp1.next = new Node(0);
-	            temp1 = temp1.next;
-	            temp2 = temp2.next;
-	        }
-	        temp1 = reverse(head1);
-	        temp2 = reverse(head2);
-	        int ans = add(temp1,temp2);
-	        if(ans==1){
-	            Node newNode = new Node(1);
-	            newNode.next = temp1;
-	            return newNode;
-	        }else{
-	            return temp1;
-	        }
-	    }
-	    
+	       
     /***
      * 
      *  Time Complexity :- O(max(m,n))
@@ -112,7 +86,7 @@ public class Add2List {
      *  Add preceeding zeroes to make length of both linked-list equal.
      * 	This approach use recursion to add elements.
      */
-    public static Node addTwoLists2(Node first, Node second){
+    public static Node addTwoLists1(Node first, Node second){
         Node temp1 = first;
         Node temp2 = second;
         while(temp1!=null && temp2!=null){
@@ -153,6 +127,137 @@ public class Add2List {
         return res/10;
     }
 
+    /***
+     * 
+     *  Time Complexity :- O(m+n)
+     *  Space Complexity :- O(1)
+     * 
+     *  Add preceeding zeroes to make length of both linked-list equal.
+     * 	Reverse both the list.
+     *  Add their element one by one iteratively.
+     *  Reverse the resultant list & return it.
+     *  
+     */
+    public static Node addTwoLists2(Node first, Node second){
+        Node temp1 = first;
+        Node temp2 = second;
+        while(temp1!=null && temp2!=null){
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+        }
+        if(temp1==null){
+            while(temp2!=null){
+                temp2 = temp2.next;
+                Node newNode = new Node(0);
+                newNode.next = first;
+                first = newNode;
+            }
+        }
+        if(temp2==null){
+            while(temp1!=null){
+                temp1 = temp1.next;
+                Node newNode = new Node(0);
+                newNode.next = second;
+                second = newNode;
+            }
+        }
+        first = reverse(first);
+        second = reverse(second);
+        temp1 = first;
+        temp2 = second;
+        int carry = 0;
+        while(temp1.next!=null){
+            int res = temp1.data + temp2.data + carry;
+            temp1.data = res%10;
+            carry = res/10;
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+        }
+        int res = temp1.data + temp2.data + carry;
+        temp1.data = res%10;
+        carry = res/10;
+        if(carry==1){
+            temp1.next = new Node(1);
+            temp1 = temp1.next;
+        }
+        return reverse(first);
+    }
+    /***
+     * 
+     *  Time Complexity :- O(max(m,n))
+     *  Space Complexity :- O(max(m,n))
+     * 
+     *  Insert the elements in stack
+     * 	Pop the elememt from both the list, add them & insert them in new list.
+     *  Pop element from resultant list one by one & create linked-list.
+     *  Return the head of newly created list.
+     *  
+     */
+    public static Node addTwoListsUsingStack(Node first, Node second){
+        Stack<Integer> st1 = new Stack<>();
+        Stack<Integer> st2 = new Stack<>();
+        Node t1 = first;
+        while(t1!=null){
+            st1.push(t1.data);
+            t1 = t1.next;
+        }
+        t1 = second;
+        while(t1!=null){
+            st2.push(t1.data);
+            t1 = t1.next;
+        }
+        int carry = 0;
+        Stack<Integer> st3 = new Stack<>();
+        if(st1.size()>st2.size()){
+            while(!st2.isEmpty()){
+                int n1 = st1.pop();
+                int n2 = st2.pop();
+                int sum = n1 + n2 + carry;
+                st3.push(sum%10);
+                carry = sum/10;
+            }
+            while(!st1.isEmpty()){
+                int n1 = st1.pop();
+                int sum = n1 + carry;
+                st3.push(sum%10);
+                carry = sum/10;
+            }
+            if(carry==1){
+                st3.push(1);
+            }
+        }else{
+            while(!st1.isEmpty()){
+                int n1 = st1.pop();
+                int n2 = st2.pop();
+                int sum = n1 + n2 + carry;
+                st3.push(sum%10);
+                carry = sum/10;
+            }
+            while(!st2.isEmpty()){
+                int n1 = st2.pop();
+                int sum = n1 + carry;
+                st3.push(sum%10);
+                carry = sum/10;
+            }
+            if(carry==1){
+                st3.push(1);
+            }
+        }
+        Node head = null;
+        Node tail = null;
+        while(!st3.isEmpty()){
+            if(head==null){
+                head = new Node(st3.pop());
+                tail = head;
+            }else{
+                tail.next = new Node(st3.pop());
+                tail = tail.next;
+            }
+        }
+        return head;
+    }
+
+    
     
     public static Node reverse(Node head){
         if(head==null || head.next==null)
