@@ -30,3 +30,21 @@ public class Node {
 	}
 	
 }
+
+//
+//public static Node reverseDLL(Node  head)
+//{
+//    Node prev = null;
+//    Node curr = head;
+//    Node nextPtr = head.next;
+//    while(curr!=null){
+//        curr.next = prev;
+//        curr.prev = nextPtr;
+//        prev = curr;
+//        curr = nextPtr;
+//        if(nextPtr!=null){
+//            nextPtr = nextPtr.next;
+//        }
+//    }
+//    return prev;
+//}
