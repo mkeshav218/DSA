@@ -8,3 +8,5 @@
 [Intersection of 2 LinkedList](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/IntersectionOf2List.java) \
 [Palindrome](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/Palindrome.java) \
 [Merge-Sort](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/MergeSort.java) \
+[Doubly-Linked-List-Basic-Ops](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/DoublyLinkedList.java) \
+[Pair with a given sum in DLL](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/PairWithGivenSumInDLL.java) \
