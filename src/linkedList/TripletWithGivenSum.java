@@ -24,6 +24,12 @@ public class TripletWithGivenSum {
 		}
 	}
 	
+	/***
+	 * 
+	 * Time Complexity :- O(n2)
+	 * Space Complexity :- O(1)
+	 * @return
+	 */
 	public static List<Triplet> getTripletWithSum(int sum,NodeDLL head){
 		List<Triplet> resList = new LinkedList<>();
 		NodeDLL temp=head;
