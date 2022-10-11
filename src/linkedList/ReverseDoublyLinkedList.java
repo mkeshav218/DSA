@@ -11,29 +11,38 @@ public class ReverseDoublyLinkedList {
 		list.insertAtEnd(4);
 		list.insertAtEnd(5);
 		list.insertAtEnd(6);
-		list.insertAtBeg(0);
+		list.insertAtEnd(7);
+		list.insertAtEnd(8);
+		list.insertAtEnd(9);
+		list.insertAtEnd(10);
+		list.insertAtEnd(11);
+
 
 		list.printList();
 		System.out.println("Head = " + list.head.data + ", Tail = " + list.tail.data + ", Length = " + list.length);
 
-		System.out.println("\nReversing DLL Iteratively :- ");
-		list.tail = list.head;
-		list.head = reverse(list.head);
-		list.printList();
-		System.out.println("Head = " + list.head.data + ", Tail = " + list.tail.data + ", Length = " + list.length);
+//		System.out.println("\nReversing DLL Iteratively :- ");
+//		list.tail = list.head;
+//		list.head = reverse(list.head);
+//		list.printList();
+//		System.out.println("Head = " + list.head.data + ", Tail = " + list.tail.data + ", Length = " + list.length);
+//
+//		System.out.println("\nReversing DLL By swapping next & prev pointer :- ");
+//		list.tail = list.head;
+//		list.head = reverseDLList(list.head);
+//		list.printList();
+//		System.out.println("Head = " + list.head.data + ", Tail = " + list.tail.data + ", Length = " + list.length);
+//
+//		System.out.println("\nReversing DLL By Appending each element of the list to a new Empty List :- ");
+//		list.tail = list.head;
+//		list.head = reverseDLL(list.head);
+//		list.printList();
+//		System.out.println("Head = " + list.head.data + ", Tail = " + list.tail.data + ", Length = " + list.length);
 
-		System.out.println("\nReversing DLL By swapping next & prev pointer :- ");
-		list.tail = list.head;
-		list.head = reverseDLList(list.head);
+		System.out.println("**********      Reversing in K group     ************");
+		int k = 4;
+		list.head = reverseInKgroup(list.head, k);
 		list.printList();
-		System.out.println("Head = " + list.head.data + ", Tail = " + list.tail.data + ", Length = " + list.length);
-
-		System.out.println("\nReversing DLL By Appending each element of the list to a new Empty List :- ");
-		list.tail = list.head;
-		list.head = reverseDLL(list.head);
-		list.printList();
-		System.out.println("Head = " + list.head.data + ", Tail = " + list.tail.data + ", Length = " + list.length);
-
 	}
 	
 	/***
@@ -113,6 +122,31 @@ public class ReverseDoublyLinkedList {
 		temp.prev = null;
 		head.prev = temp;
 		return temp;
+	}
+	
+	public static NodeDLL reverseInKgroup(NodeDLL head,int k) {
+		if(head==null || head.next==null)
+			return head;
+		NodeDLL prevPtr = null,curr=head,nextPtr=head.next;
+		int counter = 0;
+		while(curr!=null && counter<k) {
+			curr.next = prevPtr;
+			curr.prev = nextPtr;
+			prevPtr = curr;
+			curr = nextPtr;
+			if(nextPtr!=null) {
+				nextPtr = nextPtr.next;
+			}
+			counter++;
+		}
+		if (counter >= k) {
+            NodeDLL tempHead = reverseInKgroup(curr, k);
+            head.next = tempHead;
+            if (tempHead != null)
+            	tempHead.prev = head;
+		}
+
+		return prevPtr;
 	}
 
 }
