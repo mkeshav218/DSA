@@ -10,3 +10,5 @@
 [Merge-Sort](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/MergeSort.java) \
 [Doubly-Linked-List-Basic-Ops](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/DoublyLinkedList.java) \
 [Pair with a given sum in DLL](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/PairWithGivenSumInDLL.java) \
+[Triplet with a given sum in DLL](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/TripletWithGivenSum.java) \
+[Reverse DLL](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/ReverseDoublyLinkedList.java) \
