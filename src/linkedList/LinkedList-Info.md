@@ -12,3 +12,5 @@
 [Pair with a given sum in DLL](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/PairWithGivenSumInDLL.java) \
 [Triplet with a given sum in DLL](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/TripletWithGivenSum.java) \
 [Reverse DLL](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/ReverseDoublyLinkedList.java) \
+[sort 0s, 1s and 2s](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/Sort_0_1_2.java) \
+[Merge K sorted List](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/MergeKSortedList.java) \
