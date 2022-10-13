@@ -15,3 +15,6 @@
 [sort 0s, 1s and 2s](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/Sort_0_1_2.java) \
 [Merge K sorted List](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/MergeKSortedList.java) \
 [Reverse Node In Even Length](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/ReverseNodeInEvenLength.java) \
+[Node cloning](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/NodeCloning.java) \
+[DeleteNodeHavingGreaterValueOnRight](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/DeleteNodeHavingGreaterValueOnRight.java) \
+[NthNodeFromEndOfList](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/NthNodeFromEndOfList.java) \
