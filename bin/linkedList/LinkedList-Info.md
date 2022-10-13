@@ -18,3 +18,8 @@
 [Node cloning](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/NodeCloning.java) \
 [DeleteNodeHavingGreaterValueOnRight](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/DeleteNodeHavingGreaterValueOnRight.java) \
 [NthNodeFromEndOfList](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/NthNodeFromEndOfList.java) \
+[Flattening a Linked List](https://github.com/mkeshav218/DSA/blob/master/src/linkedList/FlatteningLinkedList.java) \
+//QuickSort
+//sort a K sorted DLL
+//Can we reverse a linked list in less than O(n) ?
+//Why Quicksort is preferred for. Arrays and Merge Sort for LinkedLists ?
