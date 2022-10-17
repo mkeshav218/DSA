@@ -8,12 +8,14 @@ public class BinaryTree {
 	public static void main(String[] args) {
 		TreeNode root = null;
 		// 1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
-		root = buildTree();
+		//root = buildTree();
 		
 		// 1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
-		//root = buildTreeLevelwise();
+		root = buildTreeLevelwise();
 		
 		levelOrderTraversal(root);
+		
+		reverseLevelOrderTraversal(root);
 		
 		System.out.println("PreOrder Traversal :- ");
 		preOrder(root);
@@ -29,8 +31,71 @@ public class BinaryTree {
 		
 		System.out.println("No of Leaf Node :- " + noOfLeafNodes(root));
 
+		System.out.println("Height of tree :- " + height(root));
+
+		System.out.println("Diameter of tree :- " + diameter(root));
+
+		TreeNode mirrNode = mirror(root);
+		levelOrderTraversal(mirrNode);
 	}
 	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(height) = O(n){In case of skew tree}
+	 * 
+	 */
+	public static TreeNode mirror(TreeNode root) {
+		if(root==null)
+			return root;
+		TreeNode mirrorRoot = new TreeNode(root.data);
+		mirrorRoot.left = mirror(root.right);
+		mirrorRoot.right = mirror(root.left);
+		return mirrorRoot;
+	}
+	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(height) = O(n){In case of skew tree}
+	 * 
+	 */
+	public static int diameter(TreeNode root) {
+		return fastDiameter(root)[1] - 1;
+	}
+	//@returns an array of size 2, first element is height & second is diameter
+	public static int[] fastDiameter(TreeNode root) {
+		if(root==null) {
+			return new int[] {0,0};
+		}
+		int[] left = fastDiameter(root.left);
+		int[] right = fastDiameter(root.right);
+		int h = Math.max(left[0],right[0]) + 1;
+		int comboDiameter = left[0] + right[0] + 1;
+		int d = Math.max(comboDiameter, Math.max(left[1], right[1]));
+		return new int[] {h,d};
+	}
+	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(height) = O(n){In case of skew tree}
+	 * 
+	 */
+	public static int height(TreeNode root) {
+		if(root==null)
+			return 0;
+		int leftHeight = height(root.left);
+		int rightHeight = height(root.right);
+		return Math.max(leftHeight, rightHeight) + 1;
+	}
+	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- O(height) = O(n){In case of skew tree}
+	 * 
+	 */
 	public static int noOfLeafNodes(TreeNode root) {
 		if(root==null)
 			return 0;
@@ -83,8 +148,41 @@ public class BinaryTree {
 		inOrder(root.right);
 	}
 	
+	public static void reverseLevelOrderTraversal(TreeNode root) {
+		if(root==null)
+			return;
+		LinkedList<Integer> list = new LinkedList<>();
+		LinkedList<TreeNode> nodes = new LinkedList<>();
+		nodes.add(root);
+		nodes.add(null);
+		while(!nodes.isEmpty()) {
+			TreeNode temp = nodes.remove(0);
+			if(temp!=null) {
+				list.add(0, temp.data);
+				if(temp.right!=null)
+					nodes.add(temp.right);
+				if(temp.left!=null)
+					nodes.add(temp.left);
+			}else {
+				if(!nodes.isEmpty()) {
+					list.add(0,-1);
+					nodes.add(null);
+				}	
+			}
+		}
+		System.out.println("\nReverse Level Order Traversal :- ");
+		for(int i:list) {
+			if(i==-1)
+				System.out.println();
+			else
+				System.out.print(i+" ");
+		}
+		System.out.println();
+	}
+	
 	/***
 	 * 
+	 * Level order traversal can be done by using a queue and traversing nodes by depth.
 	 * Time Complexity :- O(n)
 	 * Space Complexity :- O(n)
 	 * 
