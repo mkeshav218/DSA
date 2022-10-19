@@ -6,3 +6,5 @@
 [Is-Balanced](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BalancedTree.java) \
 [Diagonal-Boundary-Traversal](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/DiagonalBoundaryTraversal.java) \
 [String <--> BinaryTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeFromStringWithBracket.java) \
+[BinaryTreeToDLL](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeToDLL.java) \
+[BinaryTreeToSumTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeToSumTree.java) \
