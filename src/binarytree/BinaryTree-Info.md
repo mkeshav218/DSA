@@ -5,3 +5,4 @@
 [ZigZag-Traversal](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/ZigZagTraversal.java) \
 [Is-Balanced](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BalancedTree.java) \
 [Diagonal-Boundary-Traversal](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/DiagonalBoundaryTraversal.java) \
+[String <--> BinaryTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeFromStringWithBracket.java) \
