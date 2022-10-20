@@ -8,3 +8,4 @@
 [String <--> BinaryTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeFromStringWithBracket.java) \
 [BinaryTreeToDLL](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeToDLL.java) \
 [BinaryTreeToSumTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeToSumTree.java) \
+[TreeFromInorderPreorder](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/TreeFromInorderPreorder.java) \
