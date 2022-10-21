@@ -21,6 +21,10 @@ public class BinaryTree {
 		preOrder(root);
 		System.out.println();
 		
+		System.out.println("morrish PreOrder Traversal :- ");
+		morrishTraversalPreOrder(root);
+		System.out.println("\n");
+		
 		System.out.println("PostOrder Traversal :- ");
 		postOrder(root);
 		System.out.println();
@@ -28,6 +32,10 @@ public class BinaryTree {
 		System.out.println("InOrder Traversal :- ");
 		inOrder(root);
 		System.out.println();
+		
+		System.out.println("morrish InOrder Traversal :- ");
+		morrishTraversalInOrder(root);
+		System.out.println("\n");
 		
 		System.out.println("No of Leaf Node :- " + noOfLeafNodes(root));
 
@@ -37,6 +45,75 @@ public class BinaryTree {
 
 		TreeNode mirrNode = mirror(root);
 		levelOrderTraversal(mirrNode);
+	}
+	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- o(1)
+	 * 
+	 */
+	public static void morrishTraversalPreOrder(TreeNode root) {
+		if(root==null)
+			return;
+		TreeNode curr = root;
+		while(curr!=null) {
+			if(curr.left==null) {
+				System.out.print(curr.data+" ");
+				curr = curr.right;
+			}else {
+				TreeNode predecessorNode = predecessor(curr);
+				if(predecessorNode.right==curr) {
+					predecessorNode.right = null;
+					curr = curr.right;
+				}else {
+					System.out.print(curr.data+" ");
+					predecessorNode.right = curr;
+					curr = curr.left;
+				
+			    }
+			}
+		}
+	}
+	
+	/***
+	 * 
+	 * Time Complexity :- O(n)
+	 * Space Complexity :- o(1)
+	 * 
+	 */
+	public static void morrishTraversalInOrder(TreeNode root) {
+		if(root==null)
+			return;
+		TreeNode curr = root;
+		while(curr!=null) {
+			if(curr.left==null) {
+				System.out.print(curr.data+" ");
+				curr = curr.right;
+			}else {
+				TreeNode predecessorNode = predecessor(curr);
+				if(predecessorNode.right==curr) {
+					System.out.print(curr.data+" ");
+					predecessorNode.right = null;
+					curr = curr.right;
+				}else {
+
+					predecessorNode.right = curr;
+					curr = curr.left;
+				
+			    }
+			}
+		}
+	}
+	
+	public static TreeNode predecessor(TreeNode root) {
+		if(root==null || root.left==null)
+			return root;
+		TreeNode temp = root;
+		temp = temp.left;
+		while(temp.right!=null && temp.right!=root)
+			temp = temp.right;
+		return temp;
 	}
 	
 	/***
