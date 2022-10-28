@@ -10,3 +10,4 @@
 [BinaryTreeToSumTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeToSumTree.java) \
 [TreeFromInorderPreorder](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/TreeFromInorderPreorder.java) \
 [SumOfLongestPath](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/SumOfLongestPath.java) \
+[CheckMirrorInNAryTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/CheckMirrorInNAryTree.java) \
