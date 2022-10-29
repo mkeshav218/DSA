@@ -12,3 +12,4 @@
 [SumOfLongestPath](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/SumOfLongestPath.java) \
 [CheckMirrorInNAryTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/CheckMirrorInNAryTree.java) \
 [Maximum Sum of Non-Adjacent Nodes](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/MaxSumOfNonAdjacentNodes.java) \
+[K sum Path In Binary-Tree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/KsumPathsInBinarytree.java) \
