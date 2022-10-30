@@ -13,3 +13,6 @@
 [CheckMirrorInNAryTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/CheckMirrorInNAryTree.java) \
 [Maximum Sum of Non-Adjacent Nodes](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/MaxSumOfNonAdjacentNodes.java) \
 [K sum Path In Binary-Tree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/KsumPathsInBinarytree.java) \
+[Lowest Common Ancestor](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/LCAInBinarytree.java) \
+[Distance Between Two Nodes](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/DistanceBetween2Nodes.java) \
+[KthAncestor](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/KthAncestor.java) \
