@@ -54,25 +54,35 @@ public class MergeTwoBST {
 		 * Step - 2 :- Merge both list to create a sorted list
 		 * Step - 3 :- Create BST from merged list
 		 * Time Complexity :- O(m+n)
+		 * Space Complexity :- O(m+n)
 		 */
-		ArrayList<Integer> list1 = new ArrayList<>();
-		ArrayList<Integer> list2 = new ArrayList<>();
-		inordertraversal(root1, list1);
-		inordertraversal(root2, list2);
+//		ArrayList<Integer> list1 = new ArrayList<>();
+//		ArrayList<Integer> list2 = new ArrayList<>();
+//		inordertraversal(root1, list1);
+//		inordertraversal(root2, list2);
+//		
+//		ArrayList<Integer> mergedList = mergeSortedList(list1, list2);
+//		
+//		index=0;
+//		TreeNode mergedRoot = createBST(mergedList, 0, mergedList.size()-1);
+//		levelOrderTraversal(mergedRoot);
+//		
+//		System.out.println("InOrder Traversal of Merged Tree :- ");
+//		inorder(mergedRoot);
 		
-		ArrayList<Integer> mergedList = mergeSortedList(list1, list2);
+		TreeNode head = null;
 		
-		index=0;
-		TreeNode mergedRoot = createBST(mergedList, 0, mergedList.size()-1);
-		levelOrderTraversal(mergedRoot);
-		
-		System.out.println("InOrder Traversal of Merged Tree :- ");
-		inorder(mergedRoot);
+		TreeNode temp = flatten(root1, head);;
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp = temp.right;
+		}
 	}
 	
 	/***
 	 * Method - 1
 	 * Time Complexity :- O(mlogn)
+	 * Space Complexity :- O(m)
 	 * Insert each element of one tree to other one by one
 	 */
 	public static void insertFromOneTreeToAnother(TreeNode root1,TreeNode root2) {
@@ -95,6 +105,7 @@ public class MergeTwoBST {
 		return root;
 	}
 	
+	// Method - 2
 	static int index = 0;
 	public static TreeNode createBST(ArrayList<Integer> list,int start,int end) {
 		if(start>end)
@@ -127,6 +138,20 @@ public class MergeTwoBST {
 			result.add(list2.get(j++));
 		}
 		return result;
+	}
+	
+	// Method - 3
+	
+	public static TreeNode flatten(TreeNode root,TreeNode head) {
+		if(root==null)
+			return null;
+		TreeNode temp = flatten(root.right,head);
+		root.right = temp;
+		if(temp!=null)
+			temp.left = root;
+		return temp = root;
+		//return flatten(root.left,temp);
+		
 	}
 	
 	public static void inordertraversal(TreeNode root,ArrayList<Integer> list) {
