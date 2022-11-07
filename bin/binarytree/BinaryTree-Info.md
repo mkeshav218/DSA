@@ -18,3 +18,4 @@
 [KthAncestor](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/KthAncestor.java) \
 [Is tree isomorphic](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/IsIsomorphic.java) \
 [Min-Time-To-Burn-BinaryTree](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/MinTimeToBurnBinaryTree.java) \
+[BinaryTree To LinkedList](https://github.com/mkeshav218/DSA/blob/master/src/binarytree/BinaryTreeToLinkedList.java) \
