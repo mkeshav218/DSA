@@ -8,3 +8,5 @@
 [NormalBSTtoBalancedBST](https://github.com/mkeshav218/DSA/blob/master/src/binarysearchtree/NormalBSTtoBalancedBST.java) \
 [Merge Two BST](https://github.com/mkeshav218/DSA/blob/master/src/binarysearchtree/MergeTwoBST.java) \
 [BST to Sorted DLL](https://github.com/mkeshav218/DSA/blob/master/src/binarysearchtree/BSTtoSortedDLL.java) \
+[Median-Of-BST](https://github.com/mkeshav218/DSA/blob/master/src/binarysearchtree/MedianOfBST.java) \
+[ReplaceElementWithLeastBiggerElementOnRight](https://github.com/mkeshav218/DSA/blob/master/src/binarysearchtree/ReplaceElementWithLeastBiggerElementOnRight.java) \
