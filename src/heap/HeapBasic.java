@@ -15,10 +15,40 @@ public class HeapBasic {
 		h.insert(70);
 		h.printHeap();
 		
-		System.out.println("Delete root testing :- ");
-		h.deleteRoot();
+//		System.out.println("Delete root testing :- ");
+//		h.deleteRoot();
+//		h.printHeap();
+//		
+//		for(int i=h.size/2;i>0;i--) {
+//			heapify(h.arr, h.size, i);
+//		}
+
+		heapSort(h);
+		
+		System.out.println("After sorting :- ");
 		h.printHeap();
 		
+	}
+	
+	/***
+	 * 
+	 * Time Complexity :- O(nlogn)
+	 * 
+	 * Build-heap using heapify function (from i=(n/2) to 1)
+	 * 
+	 * Step 1 :- Swap 1st element with last
+	 * Step 2 :- reduce length by 1
+	 * Step 3 :- Heapify the first element
+	 */
+	public static void heapSort(Heap h) {
+		int length = h.size;
+		while(length>1) {
+			int k =  h.arr[1];
+			h.arr[1] = h.arr[length];
+			h.arr[length] = k;
+			length--;
+			heapify(h.arr, length, 1);
+		}
 	}
 	
 	public static void heapify(int[] arr,int size,int index) {
@@ -73,6 +103,7 @@ class Heap{
 		}
 	}
 	
+	//Time Complexity :- O(logn)
 	void deleteRoot() {
 		if(size==0) {
 			System.out.println("Heap is empty...Nothing to delete");
