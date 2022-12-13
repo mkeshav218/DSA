@@ -6,3 +6,4 @@
 [Merge2MaxHeap](https://github.com/mkeshav218/DSA/blob/master/src/heap/Merge2MaxHeap.java) \
 [MergeKSortedArray](https://github.com/mkeshav218/DSA/blob/master/src/heap/MergeKSortedArray.java) \
 [KthLargestSumContiguousSubarray](https://github.com/mkeshav218/DSA/blob/master/src/heap/KthLargestSumContiguousSubarray.java) \
+[MedianInStreamOfIntegers](https://github.com/mkeshav218/DSA/blob/master/src/heap/MedianInStreamOfIntegers.java) \

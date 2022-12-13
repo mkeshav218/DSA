@@ -2,19 +2,22 @@ package heap;
 
 /***
  * 
- * Given K sorted lists of integers, KSortedArray[] of size N each.
- * The task is to find the smallest range that includes at least one element from each of the K lists.
- * If more than one such range's are found, return the first such range found.
+ * Given an input stream of N integers. The task is to insert these numbers into a new stream and 
+ * find the median of the stream formed by each insertion of X to the new stream.
  * 
- * Time Complexity : O(n * k *log k)
- * Space Complexity  : O(k)
+ * Time Complexity : O(nlogn)
+ * Space Complexity  : O(n)
+ * 
+ * In sorted list
+ * if sizeof(list) is odd, median = middle element
+ * else median = avg of n/2th and ((n/2)+1)th element
  * 
  */
 public class MedianInStreamOfIntegers {
 
 	public static void main(String[] args) {
-		int N = 4;
-		int[] X = {5,15,1,3};
+		int N = 10;//4;
+		int[] X = {9384,887,2778,6916,7794,8336,5387,493,6650,1422};//{5,15,1,3};
 		
 		MaxHeap maxHeap = new MaxHeap(N);
 		MinHeap minHeap = new MinHeap(N);
@@ -92,8 +95,6 @@ class MaxHeap{
 	}
 	
 	private void heapify(int index) {
-		if(index<=1)
-			return;
 		int left = 2*index;
 		int right = 2*index + 1;
 		int curr = index;
@@ -149,8 +150,6 @@ class MinHeap{
 	}
 	
 	private void heapify(int index) {
-		if(index<=1)
-			return;
 		int curr = index;
 		int left = 2*index;
 		int right = 2*index + 1;
