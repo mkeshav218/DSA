@@ -7,3 +7,4 @@
 [MergeKSortedArray](https://github.com/mkeshav218/DSA/blob/master/src/heap/MergeKSortedArray.java) \
 [KthLargestSumContiguousSubarray](https://github.com/mkeshav218/DSA/blob/master/src/heap/KthLargestSumContiguousSubarray.java) \
 [SmallestRangeInKList](https://github.com/mkeshav218/DSA/blob/master/src/heap/SmallestRangeInKList.java) \
+[MedianInStreamOfIntegers](https://github.com/mkeshav218/DSA/blob/master/src/heap/MedianInStreamOfIntegers.java) \
