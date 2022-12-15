@@ -8,3 +8,4 @@
 [KthLargestSumContiguousSubarray](https://github.com/mkeshav218/DSA/blob/master/src/heap/KthLargestSumContiguousSubarray.java) \
 [SmallestRangeInKList](https://github.com/mkeshav218/DSA/blob/master/src/heap/SmallestRangeInKList.java) \
 [MedianInStreamOfIntegers](https://github.com/mkeshav218/DSA/blob/master/src/heap/MedianInStreamOfIntegers.java) \
+[SortedListToMinHeap](https://github.com/mkeshav218/DSA/blob/master/src/heap/SortedListToMinHeap.java) \
