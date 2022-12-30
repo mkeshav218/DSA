@@ -5,7 +5,6 @@ import java.util.Stack;
 public class GetMinInStack {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		SpecialStack spStack = new SpecialStack();
 		spStack.push(5);
 		spStack.push(3);
