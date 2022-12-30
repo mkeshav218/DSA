@@ -4,3 +4,4 @@
 [Sort Stack Using Recursion](https://github.com/mkeshav218/DSA/blob/master/src/stack/Sort.java) \
 [MaxAreaInHistogram](https://github.com/mkeshav218/DSA/blob/master/src/stack/MaxAreaInHistogram.java) \
 [MaxRectangle](https://github.com/mkeshav218/DSA/blob/master/src/stack/MaxRectangle.java) \
+[GetMinInStack](https://github.com/mkeshav218/DSA/blob/master/src/stack/GetMinInStack.java) \
