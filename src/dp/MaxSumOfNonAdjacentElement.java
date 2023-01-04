@@ -10,12 +10,12 @@ public class MaxSumOfNonAdjacentElement {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int arr[] = {3, 2, 7, 10};//{5, 5, 10, 100, 10, 5};//
+		int arr[] = {5, 5, 10, 100, 10, 5};//{3, 2, 7, 10};//
 		
 		System.out.println("Using Tabulation :- " + getMaxSumTab(arr));
 		System.out.println("Using Memoization :- " + getMaxSumMem(arr));
 		System.out.println("Using Space Optimization :- " + getMaxSumSO(arr));
-
+		System.out.println("Memoization Using single array :- "+ getSum(arr));
 	}
 	
 	/***
@@ -72,6 +72,24 @@ public class MaxSumOfNonAdjacentElement {
 		getMaxSumMemUtil(arr, n-1);
 		include[n] = arr[n] + exclude[n-1];
 		exclude[n] = Math.max(include[n-1],exclude[n-1]);
+	}
+	
+	public static int[] dpMaxSum;
+	public static int getSum(int[] arr) {
+		int n = arr.length;
+		dpMaxSum = new int[n];
+		return getSumUtil(arr, n-1);
+	}
+	public static int getSumUtil(int[] arr,int n) {
+		if(n<0)
+			return 0;
+		if(n==0)
+			return arr[0];
+		if(dpMaxSum[n]!=0)
+			return dpMaxSum[n];
+		int includeSum = arr[n] + getSumUtil(arr,n-2);
+		int excludeSum = getSumUtil(arr,n-1);
+		return dpMaxSum[n]=Math.max(includeSum, excludeSum);
 	}
 
 }
