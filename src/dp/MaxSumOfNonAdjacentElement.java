@@ -5,6 +5,12 @@ package dp;
  * In an array of positive numbers, find the maximum sum of a subsequence,
  * such that no 2 numbers in the sequence should be adjacent in the array.
  *
+ * There is a similar question based on it, "House Robber".
+ * There are N houses built in a line, each of which contains some value in it. A thief is going to steal 
+ * the maximum value of these houses, but he can’t steal in two adjacent houses. The task is to find what is 
+ * the maximum stolen value.First & last house are adjacent to each other.
+ * For this question, we need to calculate the max value twice, first by ignoring the last element & second by 
+ * ignoring the first element, & the answer will be maximum of these two. 
  */
 public class MaxSumOfNonAdjacentElement {
 
