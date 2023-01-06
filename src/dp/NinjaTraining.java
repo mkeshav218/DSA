@@ -10,11 +10,10 @@ public class NinjaTraining {
 		
 		dpTraining = new int[training.length][4];
 		System.out.println("Using Memoization :- "+trainingMem(training.length-1, 3, training));
-//		for(int i=0;i<training.length;i++)
-//			System.out.println(Arrays.toString(dpTraining[i]));
 		
 		System.out.println("Using Tabulation :- "+trainingTab(training));
 
+		System.out.println("Using Space Optimization :- "+trainingSO(training));
 
 	}
 
@@ -80,6 +79,31 @@ public class NinjaTraining {
 		int max = 0;
 		for(int i=0;i<3;i++) {
 			max = Math.max(max, dpTrainingTab[dpTrainingTab.length-1][i]);
+		}
+		return max;
+	}
+	
+	public static int trainingSO(int[][] training) {
+		int[] prev = new int[3];
+		for(int i=0;i<3;i++) {
+			prev[i] = training[0][i];
+		}
+		for(int i=1;i<training.length;i++) {
+			int[] dpTrainingSO = new int[3];
+			for(int j=0;j<3;j++) {
+				int max = 0;
+				for(int k=0;k<3;k++) {
+					if(j!=k) {
+						max = Math.max(max, prev[k]);
+					}
+				}
+				dpTrainingSO[j] = training[i][j]+ max;
+			}
+			prev = dpTrainingSO;
+		}
+		int max = 0;
+		for(int i=0;i<3;i++) {
+			max = Math.max(max, prev[i]);
 		}
 		return max;
 	}
