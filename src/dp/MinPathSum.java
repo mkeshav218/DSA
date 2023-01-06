@@ -7,6 +7,8 @@ public class MinPathSum {
 		int[][] grid = {{1,3,1},{1,5,1},{4,2,1}};
 		System.out.println("Using Memoization :- " + minPathMem(grid));
 		System.out.println("Using Tabulation :- " + minPathTab(grid));
+		System.out.println("Using Space Optimization :- " + minPathSO(grid));
+
 	}
 	
 	/***
@@ -58,5 +60,35 @@ public class MinPathSum {
 			}
 		}
 		return dpPathTab[m-1][n-1];
+	}
+	
+	/***
+	 * Time Complexity :- O(m * n)
+	 * Space Complexity :- O(n)
+	 */
+	public static int minPathSO(int[][] grid) {
+		int m = grid.length;
+		int n = grid[0].length;
+		int[] prev = new int[n];
+		for(int i=0;i<m;i++) {
+			int[] dpPathSO = new int[n];
+			for(int j=0;j<n;j++) {
+				int left = Integer.MAX_VALUE;
+				int up = Integer.MAX_VALUE;
+				if(i>0) {
+					left = prev[j];
+				}
+				if(j>0) {
+					up = dpPathSO[j-1];
+				}
+				int value = Math.min(up, left);
+				if(value!=Integer.MAX_VALUE)
+					dpPathSO[j] = grid[i][j] + Math.min(left,up);
+				else
+					dpPathSO[j] = grid[i][j];
+			}
+			prev = dpPathSO;
+		}
+		return prev[n-1];
 	}
 }

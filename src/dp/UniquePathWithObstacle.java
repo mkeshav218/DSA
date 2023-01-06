@@ -8,6 +8,9 @@ public class UniquePathWithObstacle {
 		System.out.println("Using Memoization :- " + uniquePathMem(obstacleGrid));
 		
 		System.out.println("Using Tabulation :- " + uniquePathTab(obstacleGrid));
+		
+		System.out.println("Using Space Optimization :- " + uniquePathSO(obstacleGrid));
+
 	}
 	
 	/***
@@ -86,5 +89,42 @@ public class UniquePathWithObstacle {
             }
         }
         return dpPathTab[m-1][n-1];
+    }
+    
+	/***
+	 * Time Complexity :- O(m * n)
+	 * Space Complexity :- O(n)
+	 */
+    public static int uniquePathSO(int[][] path) {
+        int m = path.length;
+		int n = path[0].length;
+		
+		if(path[m-1][n-1]==1 || path[0][0]==1){
+            return 0;
+        }
+		int[] prev = new int[n];
+		for(int i=0;i<n;i++) {
+			if(path[0][i]==0) {
+				prev[i] = 1;
+			}else {
+				break;
+			}
+		}
+		for(int i=1;i<m;i++) {
+			int[] dpPathSO = new int[n];
+			for(int j=0;j<n;j++) {
+				if(path[i][j]==1) {
+					dpPathSO[j] = 0;
+				}else {
+					if(j==0) {
+						dpPathSO[j] = prev[j];
+					}else {
+						dpPathSO[j] = dpPathSO[j-1] + prev[j];
+					}
+				}
+			}
+			prev = dpPathSO;
+		}
+		return prev[n-1];
     }
 }

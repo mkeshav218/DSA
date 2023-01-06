@@ -1,5 +1,7 @@
 package dp;
 
+import java.util.Arrays;
+
 public class UniquePath {
 
 	public static void main(String[] args) {
@@ -19,6 +21,13 @@ public class UniquePath {
 		for(int i=1;i<4;i++) {
 			System.out.println("Using Tabulation :- " + countPathTab(i, i));
 		}
+		
+		System.out.println();
+		for(int i=1;i<4;i++) {
+			System.out.println("Using Space Optimization :- " + countPathSO(i, i));
+		}
+		System.out.println("Using Space Optimization :- " + countPathSO(2, 6));
+
 	}
 	/***
 	 * Time Complexity :- O(2 ^(n * m))
@@ -71,6 +80,27 @@ public class UniquePath {
 			}
 		}
 		return dpPathTab[row][col];
+	}
+	
+	/***
+	 * Time Complexity :- O(m * n)
+	 * Space Complexity :- O(n)
+	 */
+	public static int countPathSO(int row,int col) {
+		int[] prev = new int[col+1];
+		Arrays.fill(prev, 1);
+		for(int i=1;i<=row;i++) {
+			int[] dpPathSO = new int[col+1];
+			for(int j=0;j<=col;j++) {
+				if(j==0) {
+					dpPathSO[0]=1;
+				}else {
+					dpPathSO[j] = dpPathSO[j-1] + prev[j];
+				}
+			}
+			prev = dpPathSO;
+		}
+		return prev[col];
 	}
 
 }
