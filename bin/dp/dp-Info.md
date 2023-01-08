@@ -12,3 +12,4 @@
 [MinFallingPathSum](https://github.com/mkeshav218/DSA/blob/master/src/dp/MinFallingPathSum.java) \
 
 [CherryPickup](https://github.com/mkeshav218/DSA/blob/master/src/dp/CherryPickup.java) \
+[CherryPickup2](https://github.com/mkeshav218/DSA/blob/master/src/dp/CherryPickup2.java) \
