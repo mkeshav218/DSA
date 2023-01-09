@@ -13,3 +13,6 @@
 
 [CherryPickup](https://github.com/mkeshav218/DSA/blob/master/src/dp/CherryPickup.java) \
 [CherryPickup2](https://github.com/mkeshav218/DSA/blob/master/src/dp/CherryPickup2.java) \
+
+[SubSequenceSumK](https://github.com/mkeshav218/DSA/blob/master/src/dp/SubSequenceSumK.java) \
+[PartitionEqualSubSetSum](https://github.com/mkeshav218/DSA/blob/master/src/dp/PartitionEqualSubSetSum.java) \
